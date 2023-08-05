@@ -53,10 +53,10 @@ const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
   Person.findOne({ _id: personId }, (err, person) => {
     if (err) done(err)
-    person[favoriteFoods].push(foodToAdd);
-    person.save((err, person) => {
+    person.favoriteFoods.push(foodToAdd);
+    person.save((err, updatedPerson) => {
       if (err) done(err)
-      else done(null, person);
+      else done(null, updatedPerson);
     });
   });
   done(null /*, data*/);
